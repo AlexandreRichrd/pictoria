@@ -2,13 +2,18 @@
     <header>
         <div class="empty"></div>
         <MainLogo />
-        <MainButton size="s" to="connection">S'identifier</MainButton>
+        <MainButton size="s" to="connection" v-if="!userStore.getters.getUserIsConnected(useUserStore)">S'identifier</MainButton>
+        <MainButton size="s" to="profile" v-if="userStore.getters.getUserIsConnected(useUserStore)">Espace membre</MainButton>
     </header>
 </template>
 
 <script lang="ts" setup>
 import MainLogo from '../logo/MainLogo.vue';
 import MainButton from '../button/MainButton.vue';
+import { useUserStore } from '../../store/user';
+
+const userStore = useUserStore();
+console.log(userStore.getters.getUserIsConnected);
 </script>
 
 <style lang="scss" scoped>

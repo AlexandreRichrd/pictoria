@@ -5,7 +5,7 @@
                 <div class="croix">
                     <router-link to="/">X</router-link>
                 </div>
-                <h1>Connexion</h1>
+                <h1>Inscription</h1>
             </div>
             <connection-form />
         </div>
@@ -16,14 +16,9 @@
 import router from '../../router';
 import ConnectionForm from './ConnectionForm.vue';
 
-
-
-
-
 const closeModale = () => {
     router.push('/')
 }
-
 
 </script>
 
