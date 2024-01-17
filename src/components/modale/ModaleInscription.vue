@@ -7,14 +7,14 @@
                 </div>
                 <h1>Inscription</h1>
             </div>
-            <connection-form />
+            <registration-form />
         </div>
     </div>
 </template>
 
 <script lang="ts" setup>
 import router from '../../router';
-import ConnectionForm from './ConnectionForm.vue';
+import RegistrationForm from './RegistrationForm.vue';
 
 const closeModale = () => {
     router.push('/')
@@ -32,7 +32,7 @@ const closeModale = () => {
     justify-content: center;
     align-items: center;
     .modale{
-        height:60%;
+        height:85%;
         width: 40%;
         border-radius: 1rem;
         background-color: #FFF;

@@ -16,14 +16,9 @@
 import router from '../../router';
 import ConnectionForm from './ConnectionForm.vue';
 
-
-
-
-
 const closeModale = () => {
     router.push('/')
 }
-
 
 </script>
 
