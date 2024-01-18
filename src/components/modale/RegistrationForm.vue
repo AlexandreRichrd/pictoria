@@ -46,7 +46,7 @@
   
     const handleSubmit = (e: Event) => {
         e.preventDefault();
-        userStore.actions.tryConnection(credentials, userStore.state)
+        userStore.actions.tryRegister(credentials)
     };
 </script>
   
