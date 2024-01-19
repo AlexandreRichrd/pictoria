@@ -19,10 +19,11 @@ const props = defineProps({
 
 <style lang="scss" scoped>
 a{
-    background-color: var(--primary);
+    background-color:#FFF;
     
-    color: #fff;
+    color: var(--primary);
     text-decoration: none;
+    border: 1px solid var(--primary);
     &:hover{
         background-color: var(--primary-hover);
     }

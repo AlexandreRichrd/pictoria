@@ -4,6 +4,7 @@ import ModaleConnectionVue from './components/modale/ModaleConnection.vue'
 import ModaleInscriptionVue from './components/modale/ModaleInscription.vue'
 import ProfilePageVue from './pages/ProfilePage.vue'
 import PersonnalGalleryVue from './components/profile/PersonnalGallery.vue'
+import ContestPageVue from './pages/ContestPage.vue'
 
 const routes = [
     {
@@ -29,6 +30,10 @@ const routes = [
                 component: PersonnalGalleryVue
             }
         ]
+    },
+    {
+        path: '/contest',
+        component: ContestPageVue
     }
 ]
 
