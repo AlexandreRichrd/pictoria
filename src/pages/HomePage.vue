@@ -16,6 +16,17 @@
 <script lang="ts" setup>
 import NavBar from '../components/navbar/NavBar.vue';
 import MainButton from '../components/button/MainButton.vue';
+import axios from 'axios';
+import { onMounted } from 'vue';
+
+const getTest = async () => {
+    const res = await axios.get('http://localhost/pictoria/pictoria-back/');
+    console.log(res.data);
+}
+
+onMounted(() => {
+    getTest();
+})
 </script>
 
 <style lang="scss" scoped>

@@ -19,33 +19,29 @@ export const useUserStore = defineStore('user', () => ({
     actions: {
         async tryConnection(body: IConnexionBody, state:any): Promise<void> {
             try {
-              const response = await axios.post('http://127.0.0.1/picock', {
-                username: body.username,
-                password: body.password
-              });
-      
-              alert(response.data.message);
-              state.user = response.data.user;
-              state.user.isConnected = true;
-              localStorage.isConnected = true;
-      
-              // Mettez à jour l'état de l'utilisateur ici si nécessaire
-            } catch (error: any) {
-              alert(error.message || 'Une erreur est survenue');
-            }
-        },
-        async tryRegister(body: IInscriptionBody): Promise<void> {
-            try {
-                const response = await axios.post('http://localhost/picock/inscription', {
-                    name: body.name,
-                    firstname: body.firstname,
-                    address: body.address,
+                const response = await axios.put('http://localhost/pictoria/pictoria-back/', {
                     username: body.username,
                     password: body.password
                 });
                 console.log(response.data);
+                state.user = response.data.user;
+
             } catch (error: any) {
-                alert(error.message || 'Une erreur est survenue');
+                console.error(error);
+            }
+        },
+        async tryRegister(body: IInscriptionBody): Promise<void> {
+            try {
+                const response = await axios.post('http://localhost/pictoria/pictoria-back/', {
+                    name: "alex",
+                    firstname: "ric",
+                    address: "sdf",
+                    username: "aaa",
+                    password: "prout"
+                });
+                console.log(response.data);
+            } catch (error: any) {
+                console.error(error);
             }
         }
     },
