@@ -1,13 +1,20 @@
 <template>
     <router-link :to="'/contest'" id="contest-list-item">
-        <h2>Titre du concours</h2>
-        <p>finit le : 05/02/2023</p>
-        <p>Nombre de participants : 5</p>
-        <p class="open">Ouvert</p>
+        <h2>{{ props.title }}</h2>
+        <p>finit le : {{ props.endingDate }}</p>
+        <p>créé le: {{ props.creationDate }}</p>
+        <p :class="props.status == 'pas commence' ? 'pending' : props.status == 'en cours' ? 'open' : 'closed'">{{ props.status }}</p>
     </router-link>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const props = defineProps({
+    title: String,
+    endingDate: String,
+    creationDate: String,
+    status: String
+})
+</script>
 
 <style lang="scss" scoped>
 #contest-list-item{

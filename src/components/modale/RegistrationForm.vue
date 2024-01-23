@@ -111,4 +111,4 @@
             text-align: center;
         }
     }
-</style>
+</style>../../store/user.store

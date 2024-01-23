@@ -10,7 +10,7 @@
 <script lang="ts" setup>
 import MainLogo from '../logo/MainLogo.vue';
 import MainButton from '../button/MainButton.vue';
-import { useAuthStore } from '../../store/auth';
+import { useAuthStore } from '../../store/auth.store';
 import { computed } from 'vue';
 
 const authStore = useAuthStore();
@@ -32,4 +32,4 @@ header{
     }
 }
 </style>
-```
+```../../store/auth.store

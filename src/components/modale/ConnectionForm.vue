@@ -17,7 +17,7 @@
   
 <script lang="ts" setup>
     import { reactive } from 'vue';
-    import { useUserStore } from '../../store/user';
+    import { useUserStore } from '../../store/user.store';
     import { IConnexionBody } from '../../interfaces/user.interface';
     import router from '../../router';
   
@@ -92,4 +92,4 @@
             text-align: center;
         }
     }
-</style>
+</style>../../store/user.store

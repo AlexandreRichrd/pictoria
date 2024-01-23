@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { IUser, IConnexionBody, IInscriptionBody } from '../interfaces/user.interface';
 import axios from 'axios';
-import { useAuthStore } from './auth';
+import { useAuthStore } from './auth.store';
 
 export const useUserStore = defineStore('user', () => ({
     state: () => ({
