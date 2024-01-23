@@ -2,18 +2,22 @@
     <header>
         <div class="empty"></div>
         <MainLogo />
-        <MainButton size="s" to="connection" v-if="!userStore.getters.getUserIsConnected(useUserStore)">S'identifier</MainButton>
-        <MainButton size="s" to="profile" v-if="userStore.getters.getUserIsConnected(useUserStore)">Espace membre</MainButton>
+        <MainButton size="s" to="connection" v-if="!isAuthenticated">S'identifier</MainButton>
+        <MainButton size="s" to="profile" v-if="isAuthenticated">Espace membre</MainButton>
     </header>
 </template>
 
 <script lang="ts" setup>
 import MainLogo from '../logo/MainLogo.vue';
 import MainButton from '../button/MainButton.vue';
-import { useUserStore } from '../../store/user';
+import { useAuthStore } from '../../store/auth';
+import { computed } from 'vue';
 
-const userStore = useUserStore();
-console.log(userStore.getters.getUserIsConnected);
+const authStore = useAuthStore();
+
+// Accès direct au getter, qui est réactif
+const isAuthenticated = computed(() => authStore.getters.isAuthenticated(authStore));
+
 </script>
 
 <style lang="scss" scoped>

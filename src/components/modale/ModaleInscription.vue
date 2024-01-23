@@ -6,15 +6,18 @@
                     <router-link to="/">X</router-link>
                 </div>
                 <h1>Inscription</h1>
+                <validation-circuit />
             </div>
-            <registration-form />
+            <registration-form-one />
+            <div></div>
         </div>
     </div>
 </template>
 
 <script lang="ts" setup>
 import router from '../../router';
-import RegistrationForm from './RegistrationForm.vue';
+import RegistrationFormOne from './RegistrationFormOne.vue';
+import ValidationCircuit from '../formulaire/ValidationCircuit.vue';
 
 const closeModale = () => {
     router.push('/')

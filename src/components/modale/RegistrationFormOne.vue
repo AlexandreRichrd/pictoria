@@ -1,42 +1,48 @@
 <template>
     <div class="formulaire">
         <form @submit="handleSubmit">
-            <div class="champ">
-                <label for="username">Nom d'utilisateur</label>
-                <input type="text" name="username" id="username" placeholder="Nom d'utilisateur" v-model="credentials.username" />
+            <div class="champs">
+                <div class="champ">
+                    <label for="name">Nom</label>
+                    <input type="text" name="name" id="name" placeholder="Nom" v-model="credentials.name" />
+                </div>
+                <div class="champ">
+                    <label for="firstname">Prénom</label>
+                    <input type="text" name="firstname" id="firstname" placeholder="Prénom" v-model="credentials.firstname" />
+                </div>
             </div>
             <div class="champ">
-                <label for="password">Mot de passe</label>
-                <input type="password" name="password" id="password" placeholder="Mot de passe" v-model="credentials.password" />
+                <label for="birthDate">Date de naissance</label>
+                <input type="date" name="birthDate" id="birthDate" v-model="credentials.birthDate" />
             </div>
-            <button type="submit">Connexion</button>
+            <div class="champ">
+                <label for="nationality">Nationalité</label>
+                <input type="text" name="nationality" id="nationality" placeholder="Nationalité" v-model="credentials.nationality" />
+            </div>
+            
+            <button type="submit">Inscription</button>
         </form>
-        <router-link to="/inscription" class="inscription">Pas encore inscrit ?</router-link>
+        <router-link to="/connection" class="inscription">Déjà inscrit ?</router-link>
     </div>
 </template>
   
 <script lang="ts" setup>
     import { reactive } from 'vue';
-    import { useUserStore } from '../../store/user';
-    import { IConnexionBody } from '../../interfaces/user.interface';
-    import router from '../../router';
+    import { IInscriptionBodyOne } from '../../interfaces/user.interface';
+
+    const emit = defineEmits(['sendData']);
   
-    const userStore = useUserStore();
   
-    const credentials: IConnexionBody = reactive({
-        username: '',
-        password: '',
+    const credentials: IInscriptionBodyOne = reactive({
+        name: '',
+        firstname: '',
+        birthDate: '',
+        nationality: ''
     });
   
-    const handleSubmit = async (e: Event) => {
+    const handleSubmit = (e: Event) => {
         e.preventDefault();
-        const result = await userStore.actions.tryConnection(credentials, userStore.state)
-        if(result){
-            router.push('/')
-        }else{
-            alert('poblem')
-        }
-
+        emit('sendData', credentials);
     };
 </script>
   
@@ -54,6 +60,15 @@
             flex-direction: column;
             align-items: center;
             gap: 3rem;
+            .champs{
+                width: 80%;
+                display: flex;
+                justify-content: space-between;
+                gap: 2rem;
+                .champ{
+                    width: 100%;
+                }
+            }
             .champ{
                 width: 80%;
                 display: flex;

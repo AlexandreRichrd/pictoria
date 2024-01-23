@@ -25,4 +25,7 @@
 
   --validate: #3DAF07;
   --validate-hover: #78B45C;
+
+  --pending: #f1c527;
+  --pending-hover: #f1c527;
 }
