@@ -6,10 +6,11 @@
                     <router-link to="/">X</router-link>
                 </div>
                 <h1>Inscription</h1>
-                <validation-circuit />
+                <validation-circuit :active-tab="currentForm"/>
             </div>
-            <registration-form-one />
-            <div></div>
+            <registration-form-one v-if="currentForm == 1" @send-data="getFormOneData"/>
+            <registration-form-two v-if="currentForm == 2" @send-data="getAddress"/>
+            <registration-form-three v-if="currentForm == 3" @send-data="getFormThreeData"/>
         </div>
     </div>
 </template>
@@ -17,10 +18,50 @@
 <script lang="ts" setup>
 import router from '../../router';
 import RegistrationFormOne from './RegistrationFormOne.vue';
+import RegistrationFormTwo from './RegistrationFormTwo.vue';
+import RegistrationFormThree from './RegistrationFormThree.vue';
 import ValidationCircuit from '../formulaire/ValidationCircuit.vue';
+import { useUserStore } from '../../store/user.store';
+import { ref } from 'vue';
 
 const closeModale = () => {
     router.push('/')
+}
+
+const currentForm = ref(1)
+
+const formData = ref(
+    {
+    name: '',
+    firstname: '',
+    birthDate: '',
+    nationality: '',
+    address: '',
+    username: '',
+    password: ''
+})
+
+const getFormOneData = (credential: any) => {
+    console.log(credential)
+    formData.value.name = credential.name
+    formData.value.firstname = credential.firstname
+    formData.value.birthDate = credential.birthDate
+    formData.value.nationality = credential.nationality
+    console.log(formData.value)
+    currentForm.value++
+}
+
+const getAddress = (address: string) => {
+    formData.value.address = address
+    console.log(formData.value)
+    currentForm.value++
+}
+
+const getFormThreeData = (credential: any) => {
+    formData.value.username = credential.username
+    formData.value.password = credential.password
+    console.log(formData.value)
+    useUserStore().actions.tryRegister(formData.value)
 }
 
 </script>
@@ -35,7 +76,7 @@ const closeModale = () => {
     justify-content: center;
     align-items: center;
     .modale{
-        height:85%;
+        height:90%;
         width: 40%;
         border-radius: 1rem;
         background-color: #FFF;

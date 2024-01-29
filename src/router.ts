@@ -6,6 +6,7 @@ import ProfilePageVue from './pages/ProfilePage.vue'
 import PersonnalGalleryVue from './components/profile/PersonnalGallery.vue'
 import ContestPageVue from './pages/ContestPage.vue'
 import ContestListPageVue from './pages/ContestListPage.vue'
+import DrawModaleVue from './components/modale/DrawModale.vue'
 
 const routes = [
     {
@@ -33,8 +34,14 @@ const routes = [
         ]
     },
     {
-        path: '/contest',
-        component: ContestPageVue
+        path: '/contest/:id',
+        component: ContestPageVue,
+        children: [
+            {
+                path: 'deposit',
+                component: DrawModaleVue
+            }
+        ]
     },
     {
         path: '/contestlist',

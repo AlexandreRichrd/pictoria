@@ -30,6 +30,7 @@
   
     const handleSubmit = async (e: Event) => {
         e.preventDefault();
+        console.log(credentials);
         const result = await userStore.actions.tryConnection(credentials, userStore.state)
         if(result){
             router.push('/')

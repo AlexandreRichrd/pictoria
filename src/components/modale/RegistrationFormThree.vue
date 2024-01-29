@@ -1,26 +1,16 @@
 <template>
     <div class="formulaire">
         <form @submit="handleSubmit">
-            <div class="champs">
-                <div class="champ">
-                    <label for="name">Nom</label>
-                    <input type="text" name="name" id="name" placeholder="Nom" v-model="credentials.name" />
-                </div>
-                <div class="champ">
-                    <label for="firstname">Prénom</label>
-                    <input type="text" name="firstname" id="firstname" placeholder="Prénom" v-model="credentials.firstname" />
-                </div>
+            <div class="champ">
+                <label for="username">Nom d'utilisateur</label>
+                <input type="text" name="username" id="username" v-model="credentials.username" />
             </div>
             <div class="champ">
-                <label for="birthDate">Date de naissance</label>
-                <input type="date" name="birthDate" id="birthDate" v-model="credentials.birthDate" />
-            </div>
-            <div class="champ">
-                <label for="nationality">Nationalité</label>
-                <input type="text" name="nationality" id="nationality" placeholder="Nationalité" v-model="credentials.nationality" />
+                <label for="password">Mot de passe</label>
+                <input type="password" name="password" id="password" v-model="credentials.password" />
             </div>
             
-            <button type="submit">Suivant</button>
+            <button type="submit">Inscription</button>
         </form>
         <router-link to="/connection" class="inscription">Déjà inscrit ?</router-link>
     </div>
@@ -28,16 +18,12 @@
   
 <script lang="ts" setup>
     import { reactive } from 'vue';
-    import { IInscriptionBodyOne } from '../../interfaces/user.interface';
 
     const emit = defineEmits(['sendData']);
   
-  
-    const credentials: IInscriptionBodyOne = reactive({
-        name: '',
-        firstname: '',
-        birthDate: '',
-        nationality: ''
+    const credentials:any  = reactive({
+        username: '',
+        password: ''
     });
   
     const handleSubmit = (e: Event) => {

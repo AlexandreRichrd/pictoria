@@ -29,3 +29,12 @@
   --pending: #f1c527;
   --pending-hover: #f1c527;
 }
+
+@keyframes cascade {
+  0%{
+    height: 0;
+  }
+  100%{
+    height: 6rem;
+  }
+}

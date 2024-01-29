@@ -3,24 +3,24 @@
         <form @submit="handleSubmit">
             <div class="champs">
                 <div class="champ">
-                    <label for="name">Nom</label>
-                    <input type="number" name="name" id="name" placeholder="Nom" v-model="credentials.street" />
+                    <label for="street">Numéro de rue</label>
+                    <input type="number" name="street" id="street" v-model="credentials.street" />
                 </div>
                 <div class="champ">
-                    <label for="firstname">Prénom</label>
-                    <input type="text" name="firstname" id="firstname" placeholder="Prénom" v-model="credentials.address" />
+                    <label for="rue">Rue</label>
+                    <input type="text" name="rue" id="rue" placeholder="Rue" v-model="credentials.address" />
                 </div>
             </div>
             <div class="champ">
-                <label for="birthDate">Date de naissance</label>
-                <input type="date" name="birthDate" id="birthDate" v-model="credentials.city" />
+                <label for="ville">Ville</label>
+                <input type="text" name="ville" id="ville" placeholder="Ville" v-model="credentials.city" />
             </div>
             <div class="champ">
-                <label for="nationality">Nationalité</label>
-                <input type="text" name="nationality" id="nationality" placeholder="Nationalité" v-model="credentials.country" />
+                <label for="country">Pays</label>
+                <input type="text" name="country" id="country" placeholder="Pays" v-model="credentials.country" />
             </div>
             
-            <button type="submit">Inscription</button>
+            <button type="submit">Suivant</button>
         </form>
         <router-link to="/connection" class="inscription">Déjà inscrit ?</router-link>
     </div>
@@ -42,7 +42,15 @@
   
     const handleSubmit = (e: Event) => {
         e.preventDefault();
-        emit('sendData', credentials);
+        const address: string = credentials.street + 
+                        ' ' +
+                        credentials.address +
+                        ', ' +
+                        credentials.city +
+                        ', ' +
+                        credentials.country 
+
+        emit('sendData', address);
     };
 </script>
   

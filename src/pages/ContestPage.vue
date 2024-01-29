@@ -1,9 +1,10 @@
 <template>
     <div id="contest-page">
+        <RouterView />
         <NavBarNoBtn />
         <div class="banner"></div>
         <div  class="title-and-btns">
-            <h1>Concours du prout</h1>
+            <h1>{{ contest?.theme }}</h1>
             <div class="btns">
                 <MainButton size="m">Participer</MainButton> 
                 <SecondaryButton size="m">Voir les participations</SecondaryButton>
@@ -27,6 +28,21 @@
 import NavBarNoBtn from '../components/navbar/NavBarNoBtn.vue';
 import MainButton from '../components/button/MainButton.vue';
 import SecondaryButton from '../components/button/SecondaryButton.vue';
+import { onMounted, ref } from 'vue';
+import router from '../router';
+import { IContest } from '../interfaces/contest.interface';
+import { useContestStore } from '../store/contest.store';
+
+
+const contest = ref<IContest>()
+const contestStore = useContestStore();
+
+onMounted(async () => {
+    await contestStore.actions.fetchAllContests(contestStore.state);
+    const contestId: number = Number(router.currentRoute.value.params.id)
+    contest.value = contestStore.getters.getContestById(contestStore, contestId)[0]
+    
+})
 </script>
 
 <style scoped lang="scss">

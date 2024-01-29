@@ -3,7 +3,7 @@
         <NavBarNoBtn />
         <h1>Liste des concours</h1>
         <div class="contest-list" v-for="contest in contests">
-            <ContestListItem :title="contest.theme" :ending-date="contest.dateFin" :creation-date="contest.dateCreation" :status="contest.etat" />
+            <ContestListItem :id="contest.numConcours" :title="contest.theme" :ending-date="contest.dateFin" :creation-date="contest.dateCreation" :status="contest.etat" />
         </div>
     </div>
 </template>
@@ -16,14 +16,12 @@ import { useContestStore } from '../store/contest.store';
 import { onMounted, ref } from 'vue';
 
 const contestStore = useContestStore();
-contestStore.actions.fetchAllContests(contestStore.state);
 
 const contests = ref<IContest[]>([])
 
 onMounted(async () => {
-    await contestStore.actions.fetchAllContests(contestStore.state);
-    contests.value = contestStore.getters.getContests(contestStore.state);
-    console.log(contests.value)
+    await contestStore.actions.fetchAllContests(contestStore);
+    contests.value = contestStore.getters.getContests(contestStore);
 })
 
 </script>

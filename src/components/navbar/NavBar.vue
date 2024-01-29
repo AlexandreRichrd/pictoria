@@ -3,20 +3,24 @@
         <div class="empty"></div>
         <MainLogo />
         <MainButton size="s" to="connection" v-if="!isAuthenticated">S'identifier</MainButton>
-        <MainButton size="s" to="profile" v-if="isAuthenticated">Espace membre</MainButton>
+        <MainDropdown v-if="isAuthenticated" />
     </header>
 </template>
 
 <script lang="ts" setup>
 import MainLogo from '../logo/MainLogo.vue';
 import MainButton from '../button/MainButton.vue';
-import { useAuthStore } from '../../store/auth.store';
+import MainDropdown from '../dropdown/MainDropdown.vue';
 import { computed } from 'vue';
+import { useCookies } from '@vueuse/integrations/useCookies';
 
-const authStore = useAuthStore();
+const cookies = useCookies();
+
+
 
 // Accès direct au getter, qui est réactif
-const isAuthenticated = computed(() => authStore.getters.isAuthenticated(authStore));
+const isAuthenticated = computed(() => cookies.get('jwt-token') !== undefined)
+
 
 </script>
 
@@ -32,4 +36,3 @@ header{
     }
 }
 </style>
-```../../store/auth.store

@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="'/contest'" id="contest-list-item">
+    <router-link :to="'/contest/' + props.id" id="contest-list-item">
         <h2>{{ props.title }}</h2>
         <p>finit le : {{ props.endingDate }}</p>
         <p>créé le: {{ props.creationDate }}</p>
@@ -9,6 +9,7 @@
 
 <script lang="ts" setup>
 const props = defineProps({
+    id: Number,
     title: String,
     endingDate: String,
     creationDate: String,

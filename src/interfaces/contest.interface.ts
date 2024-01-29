@@ -1,5 +1,7 @@
+import type { IDraw } from "./draw.interface"
+
 export interface IContest {
-    id: number
+    numConcours: number
     theme: string
     dateDebut: string
     dateFin: string
@@ -7,3 +9,9 @@ export interface IContest {
     etat: string
     recompense: string
 }
+
+export interface IContestAndIDraw {
+    contest: IContest
+    draws: IDraw[]
+}
+    

@@ -26,9 +26,10 @@ const bubbleTab = [
 #validation-circuit{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    width: 80%;
+    width: 100%;
+    margin: 2rem 0;
     .circuit-item{
         display: flex;
         flex-direction: row;

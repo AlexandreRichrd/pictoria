@@ -7,7 +7,7 @@
                 <h1>Votre Créativité en Compétition</h1>
             </div>
             <p class="slogan">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-            <MainButton size="l">Rejoindre la compétition</MainButton>
+            <MainButton size="l" @click="handleClick">Rejoindre la compétition</MainButton>
         </div>
         <RouterView />
     </div>
@@ -16,17 +16,12 @@
 <script lang="ts" setup>
 import NavBar from '../components/navbar/NavBar.vue';
 import MainButton from '../components/button/MainButton.vue';
-import axios from 'axios';
-import { onMounted } from 'vue';
+import router from '../router';
 
-const getTest = async () => {
-    const res = await axios.get('http://localhost/pictoria/pictoria-back/');
-    console.log(res.data);
+const handleClick = () => {
+    router.push('/contestlist')
 }
 
-onMounted(() => {
-    getTest();
-})
 </script>
 
 <style lang="scss" scoped>
